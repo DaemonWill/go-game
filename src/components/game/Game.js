@@ -1,5 +1,6 @@
 import React from 'react';
 import Stone from '../../models/Stone';
+import Board from '../board/Board';
 
 class Game extends React.Component{
   constructor(props){
@@ -44,7 +45,10 @@ class Game extends React.Component{
   //description of render
   render(){
     return (
-      <p>here</p>
+      <Board
+        board = {this.state.board}
+        onClick = {() => this.handleClick()}
+      ></Board>
     );
   };
 };
