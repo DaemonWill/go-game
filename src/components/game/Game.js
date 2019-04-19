@@ -13,8 +13,7 @@ class Game extends React.Component{
   };
 
   fillBoard(){
-    //copy the board prop from state for updating
-    let board = this.state.board.slice();
+    let board = this.state.board;
     for(let x = 0; x < board.length; x++){
       for(let y = 0; y < board[x].length; y++){
         //initialize a Object<Stone> for each board space
@@ -32,10 +31,7 @@ class Game extends React.Component{
         }
       }
     }
-    this.setState({
-      board : board
-    });
-  }
+  };
 
   //description of operation
   handleClick(){
@@ -44,6 +40,7 @@ class Game extends React.Component{
 
   //description of render
   render(){
+    this.fillBoard();
     return (
       <Board
         board = {this.state.board}

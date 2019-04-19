@@ -1,0 +1,50 @@
+.space{
+  border-style: none;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 0rem;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.stone{
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: 0rem;
+  padding: 0rem;
+  border-style: none;
+  display: inline-block;
+}
+.black{
+  background-image: url('../../assets/images/blackStone.jpg');
+}
+.white{
+  background-image: url('../../assets/images/whiteStone.jpg');
+}
+.point{
+  background-image: url('../../assets/images/point.jpg');
+}
+.topright{
+  background-image: url('../../assets/images/topRightPoint.jpg');
+}
+.topleft{
+  background-image: url('../../assets/images/topLeftPoint.jpg');
+}
+.top{
+  background-image: url('../../assets/images/topPoint.jpg');
+}
+.right{
+  background-image: url('../../assets/images/rightPoint.jpg');
+}
+.left{
+  background-image: url('../../assets/images/leftPoint.jpg');
+}
+.botright{
+  background-image: url('../../assets/images/botRightPoint.jpg');
+}
+.botleft{
+  background-image: url('../../assets/images/botLeftPoint.jpg');
+}
+.bot{
+  background-image: url('../../assets/images/botPoint.jpg');
+}

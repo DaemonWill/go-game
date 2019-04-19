@@ -1,10 +1,28 @@
 import React from 'react';
+import Space from '../space/Space';
+import './board.css';
 
 class Board extends React.Component {
+  //return a string denoting the space location on the board to assign an
+  //appropriate image for the Space
+  setImageClass(x,y){
+    let className = "";
+    className += (x == 0) ? "top" : "";
+    className += (x == 18) ? "bot" : "";
+    className += (y == 0) ? "left" : "";
+    className += (y == 18) ? "right" : "";
+    className += (!className) ? "point" : "";
+    return className;
+  };
+
   //placeholder renderSpace
   renderSpace(x,y){
+    let image = this.setImageClass(x,y);
     return(
-      <p>SPACE! {x} , {y}</p>
+      <Space
+        stone = {this.props.board[x][y]}
+        class = {"space " + image}
+      ></Space>
     );
   };
 
@@ -34,7 +52,7 @@ class Board extends React.Component {
     return (
       this.generateBoard()
     );
-  }
+  };
 };
 
 export default Board;
