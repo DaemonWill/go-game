@@ -20,8 +20,10 @@ class Board extends React.Component {
     let image = this.setImageClass(x,y);
     return(
       <Space
+        id = {"" + x + "-" + y}
         stone = {this.props.board[x][y]}
         class = {"space " + image}
+        onClick = {(stone) => this.props.onClick(stone)}
       ></Space>
     );
   };

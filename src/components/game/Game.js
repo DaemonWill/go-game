@@ -17,7 +17,7 @@ class Game extends React.Component{
     for(let x = 0; x < board.length; x++){
       for(let y = 0; y < board[x].length; y++){
         //initialize a Object<Stone> for each board space
-        board[x][y] = new Stone();
+        board[x][y] = new Stone(x,y);
         //initilaize the neighbor pointers for the current space and it's set neighbors
         //north neighbor has been initialized: set north neighbor for this stone, south for other
         if(x > 0){
@@ -34,8 +34,21 @@ class Game extends React.Component{
   };
 
   //description of operation
-  handleClick(){
-    //something
+  handleClick(stone){
+    console.log("in handle click!");
+    console.log(stone);
+    let coords = stone.getCoordinates();
+    let x = coords[0];
+    let y = coords[1];
+    //copy the board state for future changes
+    let board = this.state.board.slice();
+    board[x][y].setPlayer(this.state.player);
+    console.log(stone);
+    this.setState({
+      player : (this.state.player == "black") ? "white" : "black",
+      board : board
+    });
+    console.log("after set state");
   };
 
   //description of render
@@ -44,7 +57,7 @@ class Game extends React.Component{
     return (
       <Board
         board = {this.state.board}
-        onClick = {() => this.handleClick()}
+        onClick = {(stone) => this.handleClick(stone)}
       ></Board>
     );
   };
