@@ -5,7 +5,6 @@ class Space extends React.Component {
   render(){
     return (
       <button
-        id = {this.props.id}
         className = {this.props.class}
         onClick = {() => this.props.onClick(this.props.stone)}
       >
