@@ -1,6 +1,8 @@
 import React from 'react';
 import Stone from '../../models/Stone';
 import Board from '../board/Board';
+import GameLogic from './GameLogic';
+var gameLogic = new GameLogic();
 
 class Game extends React.Component{
   constructor(props){
@@ -48,6 +50,7 @@ class Game extends React.Component{
       player : (this.state.player == "black") ? "white" : "black",
       board : board
     });
+    console.log(gameLogic.captureStones(stone));
   };
 
   //description of render

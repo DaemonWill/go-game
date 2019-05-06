@@ -14,6 +14,21 @@ export class Stone {
     this.#coordinates = [x,y];
   };
 
+  /*
+  * check to see if the given stone has an open space as a neighbor
+  * @returns {boolean} - true if empty neighbor exists
+  */
+  hasEscape(){
+    let escape = false;
+    for(let n in this.#neighbors){
+      if(this.#neighbors[n] && !this.#neighbors[n].#player){
+        escape = true;
+        break;
+      }
+    }
+    return escape;
+  }
+
   //getters
   getPlayer(){
     return this.#player;
