@@ -15,6 +15,7 @@ class GameLogic{
       if(neighbors[n] && neighbors[n].getPlayer() == enemy){
         let capturedGroup = this.captureGroup(neighbors[n]);
         for(let s in capturedGroup){
+          console.log("capturedGroup has stones")
           console.log(capturedGroup[s]);
           if(!coordinates.includes(capturedGroup[s].getCoordinates())){
             coordinates.push(capturedGroup[s].getCoordinates());
@@ -41,23 +42,32 @@ class GameLogic{
     let capturedGroup = {};
     let queue = [];
     while(current){
+      console.log("in while loop");
       console.log(current);
-      if(!capturedGroup[current]){
-        capturedGroup[current] = current;
+      if(!capturedGroup[current.getId()]){
+        capturedGroup[current.getId()] = current;
+        console.log("Adding current to capturedGroup");
         console.log(capturedGroup);
       }
       let neighbors = current.getNeighbors();
       for(let n in neighbors){
+        console.log("in neighbors loop for current");
+        console.log(neighbors[n].getPlayer());
         if(neighbors[n] && neighbors[n].getPlayer() == player){
           if(neighbors[n].hasEscape()){
+            console.log("neighbor has escape");
             return [];
           }
-          if(!capturedGroup[neighbors[n]]){
+          if(!capturedGroup[neighbors[n].getId()]){
+            console.log("pushing to queue");
             queue.push(neighbors[n]);
           }
         }
       }
+      console.log("reassigning current");
       current = queue.shift();
+      console.log(current);
+      console.log(capturedGroup);
     }
     return capturedGroup;
   }

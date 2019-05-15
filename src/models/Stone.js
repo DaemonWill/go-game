@@ -1,5 +1,6 @@
 export class Stone {
   //private field declarations
+  #id
   #player;
   #coordinates; //array -> [x,y]
   //pointers to neighbor stones
@@ -12,6 +13,7 @@ export class Stone {
 
   constructor(x,y){
     this.#coordinates = [x,y];
+    this.#id = "" + x + "," + y;
   };
 
   /*
@@ -30,6 +32,9 @@ export class Stone {
   }
 
   //getters
+  getId(){
+    return this.#id;
+  }
   getPlayer(){
     return this.#player;
   };
