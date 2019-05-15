@@ -46,6 +46,15 @@ class Game extends React.Component{
     //copy the board state for future changes
     let board = this.state.board.slice();
     board[x][y].setPlayer(this.state.player);
+    //track any stones that would be captured from this play and remove them from the board
+    let capturedStoneIds = gameLogic.captureStones(stone);
+    if(capturedStoneIds.length != 0){
+      for(let i = 0; i < capturedStoneIds.length; i++){
+        let id = capturedStoneIds[i];
+        //unset the player so that no stone visibly appears on the board
+        board[id[0]][id[1]].setPlayer("");
+      }
+    }
     this.setState({
       player : (this.state.player == "black") ? "white" : "black",
       board : board
