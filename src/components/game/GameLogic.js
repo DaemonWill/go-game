@@ -71,6 +71,22 @@ class GameLogic{
     }
     return capturedGroup;
   }
+
+  isSurrounded(stone){
+    let enemy = (stone.getPlayer() == "black") ? "white" : "black";
+    let surrounded = true;
+    let neighbors = stone.getNeighbors();
+    //set as false if there is a non enemy stone adjacent to this stone
+    for(let n in neighbors){
+      surrounded = (neighbors[n] && neighbors[n].getPlayer() != enemy) ? false : surrounded;
+    }
+    return surrounded;
+  }
+
+  //descriptor
+  calculateScores(){
+
+  }
 }
 
 export default GameLogic;

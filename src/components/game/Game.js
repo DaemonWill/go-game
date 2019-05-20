@@ -38,7 +38,7 @@ class Game extends React.Component{
     this.state.boardFilled = true;
   };
 
-  //description of operation
+  //
   handleClick(stone){
     let coords = stone.getCoordinates();
     let x = coords[0];
@@ -55,6 +55,11 @@ class Game extends React.Component{
         board[id[0]][id[1]].setPlayer("");
       }
     }
+    //check if stone can be placed after removing any captured stones (allows for endless war)
+    if(gameLogic.isSurrounded(stone)){
+      alert("Can't place a stone in a surrounded space");
+      return;
+    }
     this.setState({
       player : (this.state.player == "black") ? "white" : "black",
       board : board
@@ -62,7 +67,7 @@ class Game extends React.Component{
     console.log(gameLogic.captureStones(stone));
   };
 
-  //description of render
+  //
   render(){
     if(!this.state.boardFilled){
       this.fillBoard();
